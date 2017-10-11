@@ -5,7 +5,7 @@ After running `make` command, there will be two modules:
 * dummy-regulator.ko
 * reg-ins.ko
 
-The fist module is ou fake regulator driver, the second one is used
+The fist module is our fake regulator driver, the second one is used
 to create a plateform device that matches our first module. This way,
 one can avoid updating the devicetree.
 
