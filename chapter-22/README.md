@@ -30,7 +30,6 @@ like below:
 Before loading the module, there were no `eth0`
 
 ```bash
-
 $ ifconfig -a
 
 enp3s0f1  Link encap:Ethernet  HWaddr 34:97:f6:ba:5e:d7  
@@ -83,14 +82,10 @@ lo        Link encap:Local Loopback
 [...]
 ```
 
-One can also configure the interface,
-
- # ifconfig eth0 192.168.1.45
-
+One can also configure the interface like `ifconfig eth0 192.168.1.45`,
 and then
 
 ```bash
-
 $ ifconfig eth0
 
 eth0      Link encap:Ethernet  HWaddr 00:00:00:00:00:00  
@@ -101,4 +96,3 @@ eth0      Link encap:Ethernet  HWaddr 00:00:00:00:00:00
           collisions:0 txqueuelen:1000 
           RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 ```
-
