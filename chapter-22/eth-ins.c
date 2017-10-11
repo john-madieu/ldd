@@ -22,4 +22,4 @@ static void __exit fake_eth_put(void)
 module_init(fake_eth_add);
 module_exit(fake_eth_put);
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("John Madieu");
+MODULE_AUTHOR("John Madieu <john.madieu@gmail.com>");
