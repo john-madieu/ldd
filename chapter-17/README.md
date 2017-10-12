@@ -131,7 +131,7 @@ Testing ... (interrupt to exit)
 
 One can use the below node in the devicetree:
 
-```json*
+```json
 input_button_device {
     compatible = "packt,input-button";
     button-gpios = <&gpio2 1 GPIO_ACTIVE_LOW>;
@@ -180,4 +180,4 @@ below command:
 352:          0          0          0          0  gpio-mxc   0  2194000.usdhc cd
 ```
 
-the line with `packt-input-button` correspond to the IRQ line for this unput device
+the line with `packt-input-button` correspond to the IRQ line for this input device
