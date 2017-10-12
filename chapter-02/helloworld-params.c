@@ -25,7 +25,7 @@ static int __init hellowolrd_init(void) {
     return 0;
 }
 
-static void hellowolrd_exit(void) {
+static void __exit hellowolrd_exit(void) {
     pr_info("End of the world\n");
 }
 

@@ -6,18 +6,16 @@ After running `make` command, there will be two modules:
 * helloworld-params.ko
 
 The fist module is basic helloworld driver, the second one is the same, but
-accept some parameters, and print then in the kernel debug messages.
+accepts some parameters, and print these in the kernel debug messages.
 After loading the first module, two entries will be added in kernel debug message:
 
 ```bash
+# insmod ./helloworld.ko
 #dmesg
-[146626.222072] fake-eth added
-[146689.422000] fake-fake removed
-[146698.060074] fake eth device initialized
-[146698.060285] fake-eth added
-[146698.087297] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[...]
+[38535.487568] Hello world!
+[38542.391099] End of the world
 ```
-
 
 For the second module, one loads it with:
 
