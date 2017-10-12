@@ -31,5 +31,5 @@ static void hellowolrd_exit(void) {
 
 module_init(hellowolrd_init);
 module_exit(hellowolrd_exit);
-MODULE_AUTHOR("John Madieu <john.madieu@foobar.com>");
+MODULE_AUTHOR("John Madieu <john.madieu@gmail.com>");
 MODULE_LICENSE("GPL");
