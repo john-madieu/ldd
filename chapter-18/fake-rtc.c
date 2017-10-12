@@ -8,6 +8,7 @@
 
 
 static struct timespec begin_time;
+static unsigned long time = 0;
 
 static inline unsigned long timespec_to_ulong(struct timespec *ts)
 {
