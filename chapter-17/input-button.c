@@ -96,10 +96,7 @@ static int btn_probe(struct platform_device *pdev)
 err_btn:
     gpiod_put(priv->btn_gpiod);
 err_input:
-    printk("will call input_free_device\n");
     input_free_device(i_dev);
-    printk("will call devm_kfree\n");
-    devm_kfree(&pdev->dev, priv);
     return ret;
 }
 
