@@ -49,6 +49,6 @@ static void mm_exp_unload(void)
 module_init(mm_exp_load);
 module_exit(mm_exp_unload);
 
-MODULE_AUTHOR ("John Madieu, john.madieu@gmail.com");
+MODULE_AUTHOR ("John Madieu <john.madieu@gmail.com>");
 MODULE_DESCRIPTION ("Print segment information");
 MODULE_LICENSE("GPL");
