@@ -2,7 +2,7 @@
 #include<linux/module.h>
 #include <linux/vmalloc.h>
 
-void *ptr;
+static void *ptr;
 
 static int my_vmalloc_init(void)
 {

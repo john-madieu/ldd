@@ -3,7 +3,8 @@
 #include <linux/slab.h>
 #include <linux/mm.h>
 
-void *ptr;
+static void *ptr;
+
 static int alloc_init(void)
 {
     size_t size = 1024; /* allocate 1024 bytes */
