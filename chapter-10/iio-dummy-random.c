@@ -10,14 +10,14 @@
 #include <linux/iio/buffer.h>  /* mandatory to use triggered buffers */
 
 
-#define FAKE_VOLTAGE_CHANNEL(num)	\
-	{								\
-		.type = IIO_VOLTAGE,		\
-		.indexed = 1,				\
-		.channel = (num),			\
-		.address = (num),			\
-		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),			\
-		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE)	\
+#define FAKE_VOLTAGE_CHANNEL(num)   \
+	{                               \
+	    .type = IIO_VOLTAGE,        \
+	    .indexed = 1,               \
+	    .channel = (num),           \
+	    .address = (num),           \
+	    .info_mask_separate = BIT(IIO_CHAN_INFO_RAW),           \
+	    .info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE)    \
 	}
 
 struct my_private_data {
@@ -30,7 +30,7 @@ static int fake_read_raw(struct iio_dev *indio_dev,
 			    struct iio_chan_spec const *channel, int *val,
 			    int *val2, long mask)
 {
-    return 0;
+	return 0;
 }
 
 static int fake_write_raw(struct iio_dev *indio_dev,

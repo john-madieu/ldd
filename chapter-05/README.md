@@ -6,7 +6,7 @@ driver. After running `make` command, there will be two modules:
 * platform-dummy-char.ko
 * platform-dummy-ins.ko
 
-The fist module is our platform driver. The second one is a basinc module whose
+The fist module is our platform driver. The second one is a basic module whose
 aim is to create a platform device that will match the
 `platform-dummy-char` driver.
 

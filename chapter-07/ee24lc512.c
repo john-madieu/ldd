@@ -365,8 +365,7 @@ static int ee24lc512_probe(struct i2c_client *client,
 fail:
     if(eep_class != NULL){
         device_destroy(eep_class, MKDEV(eep_major, minor));
-        if (minor == 0)
-            class_destroy(eep_class);
+        class_destroy(eep_class);
     }
     if (eep_device != NULL)
         kfree(eep_device);

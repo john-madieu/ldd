@@ -82,7 +82,8 @@ static int mcp23016_set(struct mcp23016 *mcp, unsigned offset, int val)
 			value &= ~(1 << bit);
 
 		return i2c_smbus_write_byte_data(mcp->client, reg_gpio, value);
-	} else
+	}
+
 	return value;
 }
 
@@ -119,13 +120,13 @@ static int mcp23016_direction(struct gpio_chip *gc, unsigned offset,
 }
 
 static int mcp23016_direction_output(struct gpio_chip *gc,
-				                    unsigned offset, int val)
+                                    unsigned offset, int val)
 {
 	return mcp23016_direction(gc, offset, OUTPUT, val);
 }
 
 static int mcp23016_direction_input(struct gpio_chip *gc,
-				                    unsigned offset)
+                                    unsigned offset)
 {
 	return mcp23016_direction(gc, offset, INPUT, 0);
 }
@@ -136,7 +137,7 @@ static const struct of_device_id mcp23016_ids[] = {
 };
 
 static int mcp23016_probe(struct i2c_client *client,
-			                const struct i2c_device_id *id)
+                        const struct i2c_device_id *id)
 {
 	struct mcp23016 *mcp;
 

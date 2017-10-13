@@ -28,7 +28,6 @@ ssize_t dummy_read (struct file *filp, char __user * buf, size_t count,
     return 0;
 }
 
-
 ssize_t dummy_write(struct file * filp, const char __user * buf, size_t count,
                                 loff_t * offset)
 {

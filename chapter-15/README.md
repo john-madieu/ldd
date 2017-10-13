@@ -13,7 +13,7 @@ our fake-gpio-chip module.
 
 ## Fake gpiochip driver
 
-Prior to testing the fake gpio driver, one hould load the following modules:
+Prior to testing the fake gpio driver, one should load the following modules:
 
 ```bash
 # insmod fake-gpio-chip.ko

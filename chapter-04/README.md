@@ -1,7 +1,6 @@
 # Character device driver
 
-There are two drivers example in this chapter. After running `make` command,
-there will be one module:
+After running `make` command, there will be one module:
 
 * dummy-char.ko
 
