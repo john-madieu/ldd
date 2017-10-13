@@ -11,19 +11,19 @@
 
 
 #define FAKE_VOLTAGE_CHANNEL(num)	\
-	{							    \
+	{								\
 		.type = IIO_VOLTAGE,		\
 		.indexed = 1,				\
 		.channel = (num),			\
 		.address = (num),			\
-		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),	\
-		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE) \
+		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),			\
+		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE)	\
 	}
 
 struct my_private_data {
-    int foo;
-    int bar;
-    struct mutex lock;
+	int foo;
+	int bar;
+	struct mutex lock;
 };
 
 static int fake_read_raw(struct iio_dev *indio_dev,
@@ -37,7 +37,7 @@ static int fake_write_raw(struct iio_dev *indio_dev,
 			    struct iio_chan_spec const *chan,
 			    int val, int val2, long mask)
 {
-    return 0;
+	return 0;
 }
 
 static const struct iio_chan_spec fake_channels[] = {
@@ -60,8 +60,8 @@ static const struct iio_info fake_iio_info = {
 
 static int my_pdrv_probe (struct platform_device *pdev)
 {
-    struct iio_dev *indio_dev;
-    struct my_private_data *data;
+	struct iio_dev *indio_dev;
+	struct my_private_data *data;
 
 	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*data));
 	if (!indio_dev) {
@@ -78,25 +78,27 @@ static int my_pdrv_probe (struct platform_device *pdev)
 	indio_dev->channels = fake_channels;
 	indio_dev->num_channels = ARRAY_SIZE(fake_channels);
 	indio_dev->available_scan_masks = 0xF;
+	iio_device_register(indio_dev);
 
-    platform_set_drvdata(pdev, indio_dev);
-    return 0;
+	platform_set_drvdata(pdev, indio_dev);
+	return 0;
 }
 
-static void my_pdrv_remove(struct platform_device *pdev)
+static int my_pdrv_remove(struct platform_device *pdev)
 {
-    struct iio_dev *indio_dev = platform_get_drvdata(pdev);
+	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
 	iio_device_unregister(indio_dev);
+	return 0;
 }
 
 static struct platform_driver mypdrv = {
-    .probe      = my_pdrv_probe,
-    .remove     = my_pdrv_remove,
-    .driver     = {
-        .name     = "iio-dummy-random",
-        .of_match_table = of_match_ptr(iio_dummy_ids),  
-        .owner    = THIS_MODULE,
-    },
+	.probe      = my_pdrv_probe,
+	.remove     = my_pdrv_remove,
+	.driver     = {
+		.name     = "iio-dummy-random",
+		.of_match_table = of_match_ptr(iio_dummy_ids),  
+		.owner    = THIS_MODULE,
+	},
 };
 module_platform_driver(mypdrv);
 MODULE_AUTHOR("John Madieu <john.madieu@gmail.com>");
