@@ -53,3 +53,5 @@ which will produce below output (in console 2):
 # ./sysfs-select 
 Change detected in /sys/hello/notify
 ```
+
+Additionally, one can use `dmesg` command for debug messages.

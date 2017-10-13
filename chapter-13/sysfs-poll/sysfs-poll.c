@@ -31,7 +31,7 @@ static struct attribute * d_attrs[] = {
 static ssize_t show(struct kobject *kobj, struct attribute *attr, char *buf)
 {
     struct d_attr *da = container_of(attr, struct d_attr, attr);
-    printk( "hello: show called (%s)\n", da->attr.name );
+    pr_info( "hello: show called (%s)\n", da->attr.name );
     return scnprintf(buf, PAGE_SIZE, "%s: %d\n", da->attr.name, da->value);
 }
 static struct kobject *mykobj;
@@ -41,7 +41,7 @@ static ssize_t store(struct kobject *kobj, struct attribute *attr, const char *b
     struct d_attr *da = container_of(attr, struct d_attr, attr);
 
     sscanf(buf, "%d", &da->value);
-    printk("sysfs_notify store %s = %d\n", da->attr.name, da->value);
+    pr_info("sysfs_notify store %s = %d\n", da->attr.name, da->value);
 
     if (strcmp(da->attr.name, "notify") == 0){
         notify.value = da->value;
@@ -68,14 +68,14 @@ static struct kobject *mykobj;
 static int __init hello_module_init(void)
 {
     int err = -1;
-    printk("Hello: init\n");
+    pr_info("Pollable sysfs hello: init\n");
     mykobj = kzalloc(sizeof(*mykobj), GFP_KERNEL);
     /* mykobj = kobject_create() is not exported */
     if (mykobj) {
         kobject_init(mykobj, &k_type);
         if (kobject_add(mykobj, NULL, "%s", "hello")) {
              err = -1;
-             printk("Hello: kobject_add() failed\n");
+             pr_info("Hello: kobject_add() failed\n");
              kobject_put(mykobj);
              mykobj = NULL;
         }
@@ -90,7 +90,7 @@ static void __exit hello_module_exit(void)
         kobject_put(mykobj);
         kfree(mykobj);
     }
-    printk("Hello: exit\n");
+    pr_info("Pollable sysfs hello: exit\n");
 }
 
 module_init(hello_module_init);
