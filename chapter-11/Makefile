@@ -1,4 +1,4 @@
-obj-m := vma_list.o
+obj-m := kmalloc.o vmalloc.o vma_list.o
 
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 
