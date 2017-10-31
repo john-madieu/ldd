@@ -131,10 +131,13 @@ static int mcp23016_direction_input(struct gpio_chip *gc,
 	return mcp23016_direction(gc, offset, INPUT, 0);
 }
 
+#ifdef CONFIG_OF
 static const struct of_device_id mcp23016_ids[] = {
 	{ .compatible = "microchip,mcp23016", },
 	{ /* sentinel */ }
 };
+MODULE_DEVICE_TABLE(of, mcp23016_ids);
+#endif
 
 static int mcp23016_probe(struct i2c_client *client,
                         const struct i2c_device_id *id)
