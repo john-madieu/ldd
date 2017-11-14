@@ -125,7 +125,7 @@ ssize_t  eep_read(struct file *filp, char __user *buf,
     if (count > EEP_SIZE)
         count = EEP_SIZE;
 
-    _reg_addr = (long)*f_pos;
+    _reg_addr = (int)(*f_pos);
     reg_addr[0] = (u8)(_reg_addr >> 8);
     reg_addr[1] = (u8)(_reg_addr & 0xFF);
 
@@ -210,7 +210,7 @@ ssize_t  eep_write(struct file *filp, const char __user *buf,
         goto end_write;
     }
 
-    int _reg_addr =  (long)*f_pos;
+    int _reg_addr =  (int)(*f_pos);
     int offset = 0;
     int remain_in_page = (EEP_PAGE_SIZE - (_reg_addr % EEP_PAGE_SIZE)) % EEP_PAGE_SIZE;
     int nb_page = (count - remain_in_page) / EEP_PAGE_SIZE;
@@ -248,6 +248,8 @@ ssize_t  eep_write(struct file *filp, const char __user *buf,
         mdelay(10);
     }
 
+    *f_pos += count;
+
 end_write:
     mutex_unlock(&eeprom->eep_mutex);
     return retval;
@@ -272,7 +274,7 @@ loff_t eep_llseek(struct file *filp, loff_t off, int whence)
       default: /* can't happen */
         return -EINVAL;
     }
-    if (newpos < 0 || EEP_SIZE)
+    if (newpos < 0 || newpos > EEP_SIZE)
         return -EINVAL;
 
     filp->f_pos = newpos;
